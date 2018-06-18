@@ -13,7 +13,8 @@ RUN apt-get upgrade -y
 COPY debconf.selections /tmp/
 RUN debconf-set-selections /tmp/debconf.selections
 
-RUN apt-get install -y zip unzip
+RUN apt-get install -y zip unzip software-properties-common
+RUN add-apt-repository --yes ppa:ondrej/php && apt update
 RUN apt-get install -y \
 	php7.0 \
 	php7.0-bz2 \
